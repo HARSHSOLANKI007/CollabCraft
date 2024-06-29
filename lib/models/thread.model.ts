@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const threadSchema = new mongoose.Schema({
+  header: {
+    type: String,
+    required: true,
+  },
   text: {
     type: String,
     required: true,

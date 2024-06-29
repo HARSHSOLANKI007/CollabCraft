@@ -19,6 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { ThreadValidation } from "@/lib/validations/thread";
 import { createThread } from "@/lib/actions/thread.actions";
+import { Input } from "../ui/input";
 
 interface Props {
   userId: string;
@@ -33,6 +34,7 @@ function PostThread({ userId }: Props) {
   const form = useForm<z.infer<typeof ThreadValidation>>({
     resolver: zodResolver(ThreadValidation),
     defaultValues: {
+      header:"",
       thread: "",
       accountId: userId,
     },
@@ -40,6 +42,7 @@ function PostThread({ userId }: Props) {
 
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
     await createThread({
+      header: values.header,
       text: values.thread,
       author: userId,
       communityId: organization ? organization.id : null,
@@ -55,6 +58,21 @@ function PostThread({ userId }: Props) {
         className='mt-10 flex flex-col justify-start gap-10'
         onSubmit={form.handleSubmit(onSubmit)}
       >
+        <FormField
+          control={form.control}
+          name='header'
+          render={({ field }) => (
+            <FormItem className='flex w-full flex-col gap-3'>
+              <FormLabel className='text-base-semibold text-light-2'>
+                Task Header
+              </FormLabel>
+              <FormControl className='no-focus border border-dark-4 bg-dark-3 text-light-1'>
+                <Input placeholder="Enter Header" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name='thread'

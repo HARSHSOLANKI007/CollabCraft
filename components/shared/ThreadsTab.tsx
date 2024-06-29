@@ -11,6 +11,7 @@ interface Result {
   id: string;
   threads: {
     _id: string;
+    header:string;
     text: string;
     parentId: string | null;
     author: {
@@ -59,6 +60,7 @@ async function ThreadsTab({ currentUserId, accountId, accountType }: Props) {
           id={thread._id}
           currentUserId={currentUserId}
           parentId={thread.parentId}
+          header={thread.header}
           content={thread.text}
           author={
             accountType === "User"
