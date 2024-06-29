@@ -1,8 +1,18 @@
 export const sidebarLinks = [
+  // {
+  //   imgURL: "/assets/home.svg",
+  //   route: "/",
+  //   label: "Home",
+  // },
   {
-    imgURL: "/assets/home.svg",
-    route: "/",
-    label: "Home",
+    imgURL: "/assets/user.svg",
+    route: "/profile",
+    label: "Profile",
+  },
+  {
+    imgURL: "/assets/create.svg",
+    route: "/create-thread",
+    label: "Add Task",
   },
   {
     imgURL: "/assets/search.svg",
@@ -14,21 +24,13 @@ export const sidebarLinks = [
     route: "/activity",
     label: "Activity",
   },
-  {
-    imgURL: "/assets/create.svg",
-    route: "/create-thread",
-    label: "Create Thread",
-  },
+
   {
     imgURL: "/assets/community.svg",
     route: "/communities",
     label: "Communities",
   },
-  {
-    imgURL: "/assets/user.svg",
-    route: "/profile",
-    label: "Profile",
-  },
+
 ];
 
 export const profileTabs = [
