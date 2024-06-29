@@ -240,3 +240,22 @@ export async function addCommentToThread(
     throw new Error("Unable to add comment");
   }
 }
+
+export async function toggleThreadCompletion(id: string): Promise<void> {
+  try {
+    // Find the thread by ID
+    const thread = await Thread.findById(id);
+
+    if (!thread) {
+      throw new Error('Thread not found');
+    }
+
+    // Toggle the isCompleted field
+    thread.isCompleted = !thread.isCompleted;
+
+    // Save the updated thread document
+    await thread.save();
+  } catch (error: any) {
+    throw new Error(`Failed to toggle thread completion: ${error.message}`);
+  }
+}

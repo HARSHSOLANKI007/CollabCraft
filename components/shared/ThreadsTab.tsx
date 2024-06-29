@@ -25,6 +25,7 @@ interface Result {
       image: string;
     } | null;
     createdAt: string;
+    isCompleted: boolean;
     children: {
       author: {
         image: string;
@@ -52,6 +53,9 @@ async function ThreadsTab({ currentUserId, accountId, accountType }: Props) {
     redirect("/");
   }
 
+  console.log(result);
+  
+
   return (
     <section className='mt-9 flex flex-col gap-10'>
       {result.threads.map((thread) => (
@@ -78,6 +82,7 @@ async function ThreadsTab({ currentUserId, accountId, accountType }: Props) {
           }
           createdAt={thread.createdAt}
           comments={thread.children}
+          isCompleted={thread.isCompleted}
         />
       ))}
     </section>

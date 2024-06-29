@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { formatDateString } from "@/lib/utils";
 import DeleteThread from "../forms/DeleteThread";
+import CompleteThread from "../forms/CompleteThread";
 
 interface Props {
   id: string;
@@ -27,6 +28,7 @@ interface Props {
     };
   }[];
   isComment?: boolean;
+  isCompleted: boolean;
 }
 
 function ThreadCard({
@@ -40,15 +42,20 @@ function ThreadCard({
   createdAt,
   comments,
   isComment,
+  isCompleted,
 }: Props) {
   return (
     <article
       className={`flex w-full flex-col rounded-xl ${isComment ? "px-0 xs:px-7" : "bg-dark-2 p-7"
         }`}
     >
-      <div className='flex items-start justify-between'>
+      <div className={`flex items-start justify-between`}>
         <div className='flex w-full flex-1 flex-row gap-4'>
+        <Link href={`/profile/${author.id}`} className='relative h-11 w-11'>
+        <CompleteThread com={isCompleted} threadId={JSON.stringify(id)} />
+        </Link>
           <div className='flex flex-col items-center'>
+
             <Link href={`/profile/${author.id}`} className='relative h-11 w-11'>
               <Image
                 src={author.image}
@@ -99,6 +106,7 @@ function ThreadCard({
           parentId={parentId}
           isComment={isComment}
         />
+
       </div>
 
       {!isComment && comments.length > 0 && (

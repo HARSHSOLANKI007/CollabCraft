@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { boolean } from "zod";
 
 const threadSchema = new mongoose.Schema({
   header: {
@@ -24,6 +25,10 @@ const threadSchema = new mongoose.Schema({
   },
   parentId: {
     type: String,
+  },
+  isCompleted: {
+    type: Boolean,
+    default: false,
   },
   children: [
     {
