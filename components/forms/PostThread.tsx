@@ -67,7 +67,7 @@ function PostThread({ userId }: Props) {
                 Task Header
               </FormLabel>
               <FormControl className='no-focus border border-dark-4 bg-dark-3 text-light-1'>
-                <Input placeholder="Enter Header" {...field} />
+                <Input placeholder="Task Header Here" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -79,10 +79,10 @@ function PostThread({ userId }: Props) {
           render={({ field }) => (
             <FormItem className='flex w-full flex-col gap-3'>
               <FormLabel className='text-base-semibold text-light-2'>
-                Content
+                Task Description
               </FormLabel>
               <FormControl className='no-focus border border-dark-4 bg-dark-3 text-light-1'>
-                <Textarea rows={15} {...field} />
+                <Textarea placeholder="Task Description Here.." autoFocus autocomplete="off" rows={15} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
